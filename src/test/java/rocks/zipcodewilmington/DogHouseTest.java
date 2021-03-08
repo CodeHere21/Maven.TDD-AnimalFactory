@@ -1,8 +1,11 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
+import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
 import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
 
 import java.util.Date;
@@ -30,5 +33,51 @@ public class DogHouseTest {
 
         // Then
         DogHouse.getNumberOfDogs();
+    }
+    @Test
+    public void testAdd(){
+        String name = "Milo";
+        Date birthDate = new Date();
+        Dog animal = AnimalFactory.createDog(name, birthDate);
+        DogHouse.clear();
+        DogHouse.add(animal);
+        int givenDog=1;
+        int retrievedDog=DogHouse.getNumberOfDogs();
+        Assert.assertEquals(givenDog,retrievedDog);
+    }
+    @Test
+    public void testRemoveById(){
+        String givenName = "Milo";
+            Date givenBirthDate = new Date();
+            Integer givenId = 0;
+            Dog dog= new Dog(givenName, givenBirthDate, givenId);
+            DogHouse.add(dog);
+
+        DogHouse.remove(dog);
+        Integer givenDog=0;
+        Integer retrievedDog=dog.getId();
+        Assert.assertEquals(givenDog,retrievedDog);
+    }
+    @Test
+    public void testRemove(){
+        DogHouse.clear();
+        String givenName = "Milo";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+        Dog dog = new Dog(givenName, givenBirthDate, givenId);
+        DogHouse.add(dog);
+        DogHouse.remove(dog);
+        Integer givenDog=0;
+        Integer retrievedDog=DogHouse.getNumberOfDogs();
+        Assert.assertEquals(givenDog,retrievedDog);
+    }
+    @Test
+    public void testGetCatById(){
+        String givenName = "Milo";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+        Dog dog = new Dog(givenName, givenBirthDate, givenId);
+        Integer retrievedId= dog.getId();
+        Assert.assertEquals(givenId,retrievedId);
     }
 }

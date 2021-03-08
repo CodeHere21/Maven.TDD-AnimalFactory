@@ -45,12 +45,12 @@ public class CatTest {
     @Test
     public void testSetName() {
 
-        String givenName = "Zula";
+        String givenName = "Karina";
         Date givenBirthDate = new Date();
         Integer givenId=123;
         Cat cat = new Cat(givenName,givenBirthDate, givenId);
 
-        cat.setName(givenName);//calls metod setName
+        cat.setName(givenName);//calls method setName
         String retrievedName = cat.getName();
 
         Assert.assertEquals(givenName, retrievedName);
@@ -61,9 +61,9 @@ public class CatTest {
        Date givenBirthDate = new Date();
        Integer givenId=123;
         Cat cat = new Cat(givenName,givenBirthDate, givenId);
-        String given="meow!";
-        String retrieved = cat.speak();
-        Assert.assertEquals(given,retrieved);
+        String actual="meow!";
+        String expected = cat.speak();
+        Assert.assertEquals(expected,actual);
     }
     @Test
     public void testSetBirthDate(){
